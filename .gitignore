@@ -1,0 +1,17 @@
+# Python and package manager catch
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.uv/
+uv-cache/
+.vscode/
+
+.venv/
+.python-version
+
+# Notebooks catchs
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+./MUJOCO_LOG.TXT
