@@ -1,0 +1,167 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="humanoid_pkg">
+
+<xacro:include filename="$(find humanoid_pkg)/urdf/chest_head.xacro"/>
+<xacro:include filename="$(find humanoid_pkg)/urdf/right_arm.xacro"/>
+<xacro:include filename="$(find humanoid_pkg)/urdf/left_arm.xacro"/>
+<xacro:include filename="$(find humanoid_pkg)/urdf/right_leg.xacro"/>
+<xacro:include filename="$(find humanoid_pkg)/urdf/left_leg.xacro"/>
+
+
+ <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.002616 -0.0053305 0.076594"
+        rpy="0 0 0" />
+      <mass
+        value="0.54058" />
+      <inertia
+        ixx="0.00078596"
+        ixy="8.0295E-09"
+        ixz="4.0436E-12"
+        iyy="0.0011449"
+        iyz="-7.5045E-13"
+        izz="0.0011059" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="torso_Link">
+    <inertial>
+      <origin
+        xyz="0.00062749 -0.00020921 0.02276"
+        rpy="0 0 0" />
+      <mass
+        value="1.1981" />
+      <inertia
+        ixx="0.00051983"
+        ixy="5.0679E-10"
+        ixz="3.3744E-06"
+        iyy="0.0005022"
+        iyz="2.8579E-07"
+        izz="0.0007539" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/torso_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/torso_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="torso_joint"
+    type="revolute">
+    <origin
+      xyz="-0.00261604034721234 -0.00533051126563723 0.134475935268531"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="torso_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="10"
+      velocity="1.0" />
+  </joint>
+  <link
+    name="waist_Link">
+    <inertial>
+      <origin
+        xyz="0.0048073 0.0033257 -0.0040705"
+        rpy="0 0 0" />
+      <mass
+        value="1.0735" />
+      <inertia
+        ixx="0.0010662"
+        ixy="-3.8707E-07"
+        ixz="-3.9244E-07"
+        iyy="0.0011999"
+        iyz="-3.7642E-08"
+        izz="0.00058977" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/waist_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/waist_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="waist_joint"
+    type="revolute">
+    <origin
+      xyz="0 -0.00499999999999296 0.1177"
+      rpy="0 0 0" />
+    <parent
+      link="torso_Link" />
+    <child
+      link="waist_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="10"
+      velocity="1.0" />
+  </joint>
+
+</robot>

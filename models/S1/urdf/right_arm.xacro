@@ -1,0 +1,294 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="humanoid_pkg">
+    
+ <link
+    name="right_shoulder_pitch_Link">
+    <inertial>
+      <origin
+        xyz="0.00031467 0.0086652 -0.0021119"
+        rpy="0 0 0" />
+      <mass
+        value="0.55787" />
+      <inertia
+        ixx="0.00046536"
+        ixy="2.4609E-08"
+        ixz="2.6413E-07"
+        iyy="0.00054599"
+        iyz="-6.1605E-05"
+        izz="0.00033253" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/right_shoulder_pitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/right_shoulder_pitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_shoulder_pitch_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0589999999999747 -0.138457890749933 0.0879582158332528"
+      rpy="0 0 0" />
+    <parent
+      link="chest_Link" />
+    <child
+      link="right_shoulder_pitch_Link" />
+    <axis
+      xyz="0 -0.965925826289067 0.258819045102526" />
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="10"
+      velocity="1.0" />
+  </joint>
+  <link
+    name="right_shoulder_roll_Link">
+    <inertial>
+      <origin
+        xyz="-0.019338 -0.00043324 -0.007383"
+        rpy="0 0 0" />
+      <mass
+        value="0.48888" />
+      <inertia
+        ixx="0.00052841"
+        ixy="-1.5939E-06"
+        ixz="2.8547E-07"
+        iyy="0.00033462"
+        iyz="1.2209E-05"
+        izz="0.00033811" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/right_shoulder_roll_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/right_shoulder_roll_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_shoulder_roll_joint"
+    type="revolute">
+    <origin
+      xyz="0.0196499999999965 -0.0601771789778188 0.0161244265098969"
+      rpy="0 0 0" />
+    <parent
+      link="right_shoulder_pitch_Link" />
+    <child
+      link="right_shoulder_roll_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="10"
+      velocity="1.0" />
+  </joint>
+  <link
+    name="right_elbow_yaw_Link">
+    <inertial>
+      <origin
+        xyz="-4.3563E-07 0.0037417 0.00016863"
+        rpy="0 0 0" />
+      <mass
+        value="0.24344" />
+      <inertia
+        ixx="9.1717E-05"
+        ixy="1.8529E-08"
+        ixz="2.6213E-09"
+        iyy="9.5398E-05"
+        iyz="4.048E-07"
+        izz="8.437E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/right_elbow_yaw_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/right_elbow_yaw_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_elbow_yaw_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0196499999999985 -0.0126821332108248 -0.140580365488174"
+      rpy="0 0 0" />
+    <parent
+      link="right_shoulder_roll_Link" />
+    <child
+      link="right_elbow_yaw_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="10"
+      velocity="1.0" />
+  </joint>
+  <link
+    name="right_elbow_forearm_yaw_Link">
+    <inertial>
+      <origin
+        xyz="-0.00034522 -0.028398 -0.013635"
+        rpy="0 0 0" />
+      <mass
+        value="0.20469" />
+      <inertia
+        ixx="8.4119E-05"
+        ixy="5.7255E-08"
+        ixz="1.8341E-08"
+        iyy="8.0815E-05"
+        iyz="-1.478E-07"
+        izz="6.5937E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/right_elbow_forearm_yaw_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/right_elbow_forearm_yaw_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_elbow_forearm_yaw_joint"
+    type="revolute">
+    <origin
+      xyz="0.000304330674491246 0.0282500000008096 -0.068269636815096"
+      rpy="0 0 0" />
+    <parent
+      link="right_elbow_yaw_Link" />
+    <child
+      link="right_elbow_forearm_yaw_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="10"
+      velocity="1.0" />
+  </joint>
+  <link
+    name="right_wrist_yaw_Link">
+    <inertial>
+      <origin
+        xyz="-0.0019393 0.00024629 -0.017432"
+        rpy="0 0 0" />
+      <mass
+        value="0.3165" />
+      <inertia
+        ixx="0.00013144"
+        ixy="6.582E-08"
+        ixz="4.7674E-07"
+        iyy="0.00011219"
+        iyz="6.2895E-08"
+        izz="0.00010375" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/right_wrist_yaw_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://humanoid_pkg/meshes/right_wrist_yaw_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_wrist_yaw_joint"
+    type="revolute">
+    <origin
+      xyz="-0.000533410283256361 -0.0284513089585393 -0.123480363184904"
+      rpy="0 0 0" />
+    <parent
+      link="right_elbow_forearm_yaw_Link" />
+    <child
+      link="right_wrist_yaw_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="10"
+      velocity="1.0" />
+  </joint>   
+
+</robot>

@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<mujoco model="humanoid_pkg">
+  <worldbody/>
+</mujoco>
