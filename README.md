@@ -48,13 +48,13 @@ This repository exists **before** those layers.
 ---
 
 ## Repository Structure
-
+```
 .
 ├── scripts/ # headless tests, env setup, stability checks
 ├── notebooks/ # interactive debugging & inspection
 ├── models/ # URDF / MJCF variants
 ├── README.md
-
+```
 
 ---
 
