@@ -1,58 +1,59 @@
 # MuJoCo Bring-up (uv-managed)
 
 Minimal, **engineering-focused** MuJoCo bring-up for humanoid models.  
-This repo documents the **messy but real** process of getting a URDF-origin model into a **numerically stable MuJoCo MJCF**.
+This repository documents the **real bring-up process** of taking a URDF-derived humanoid into a **numerically stable MuJoCo simulation**.
 
 ---
 
 ## Scope
 
-This repository focuses on **model bring-up and physics sanity**, not downstream tasks.
+This repo focuses strictly on **model bring-up and physics sanity**, not downstream control or learning.
 
-- Headless MuJoCo simulation
+Included:
+- Headless MuJoCo simulation (no viewer / no GL dependency)
 - URDF → MJCF loading and conversion paths
-- Free-joint (floating base) handling
+- Floating-base (free joint) handling
 - State inspection and debugging:
-  - `qpos`, `qvel`, `ctrl`
-  - actuator ↔ joint mapping
+  - `qpos`, `qvel`, `qacc`, `ctrl`
+- Actuator ↔ joint mapping validation
 - Contact, inertia, and stability debugging
-- Scripted model re-authoring (e.g. inertial overrides)
+- Scripted re-authoring (e.g. inertial overrides)
 
 ---
 
 ## Explicit Non-Goals
 
-These are **intentionally out of scope**:
-
+Out of scope by design:
 - Reinforcement learning / training
-- High-level controllers (walking, balance, MPC, etc.)
-- Polished visualization or rendering pipelines
+- High-level controllers (walking, balance, MPC)
 - Performance optimization or real-time guarantees
+- Polished rendering pipelines
 
-This repo exists **before** those layers.
+This repository exists **before** those layers.
 
 ---
 
 ## Key Learnings Captured
 
-- MuJoCo’s URDF support is partial and requires adaptation
-- Converted inertias from CAD/URDF are often **numerically unstable**
+- MuJoCo URDF support is partial and requires adaptation
+- CAD / URDF inertias are often **numerically unstable**
 - Stable simulation requires:
   - sane free-joint initialization
-  - controlled contact setup
+  - simplified, well-placed contact geometry
   - re-authored inertial parameters
-- Actuator sliders do **not** update unless `mj_forward()` / `mj_step()` is called
-- Axis mirroring errors show up as asymmetric limb behavior
+- Actuator inputs do not propagate without `mj_forward()` / `mj_step()`
+- Axis mirroring errors manifest as asymmetric limb behavior
+- Stability must be validated **before** any control or learning work
 
 ---
 
 ## Repository Structure
-`
+
 .
-├── scripts/ # headless tests, XML transforms, inertia overrides
-├── notebooks/ # interactive debugging & visualization
+├── scripts/ # headless tests, env setup, stability checks
+├── notebooks/ # interactive debugging & inspection
 ├── models/ # URDF / MJCF variants
-├── README.md`
+├── README.md
 
 
 ---
@@ -70,38 +71,11 @@ This repo exists **before** those layers.
 
 ```bash
 uv sync
+```
+### Run headless scripts:
 
+```uv run python main.py```
 
-This creates an isolated environment with MuJoCo and required tooling.
-Running Headless Scripts
+### Launch MuJoCo viewer (for manual inspection only):
 
-uv run python scripts/<script_name>.py
-
-Used for:
-
-    model loading
-
-    state inspection
-
-    numerical stability checks
-
-Launching MuJoCo Viewer
-
-For interactive inspection and actuator debugging:
-
-uv run python -m mujoco.viewer --mjcf <path-to-mjmodel.xml>
-
-Note:
-When paused, the viewer does not update kinematics unless mj_forward() is called from code.
-Current Status
-
-    Model loads successfully in MuJoCo
-
-    Headless stepping verified
-
-    Actuator mapping validated
-
-    Numerical instability traced to inertial/contact issues
-
-    Inertial re-authoring in progress to achieve stable standing
-
+```uv run python -m mujoco.viewer --mjcf <path-to-model.xml>```
