@@ -1,17 +1,33 @@
-# Python and package manager catch
+# --------------------
+# Python / uv
+# --------------------
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-.uv/
-uv-cache/
-.vscode/
 
 .venv/
 .python-version
+.uv/
+uv-cache/
 
-# Notebooks catchs
+# --------------------
+# Editors
+# --------------------
+.vscode/
+
+# --------------------
+# Jupyter
+# --------------------
 .ipynb_checkpoints/
 notebooks/.ipynb_checkpoints/
 
-./MUJOCO_LOG.TXT
+# --------------------
+# MuJoCo generated files (IMPORTANT)
+# --------------------
+*.mjb
+*.log
+MUJOCO_LOG.TXT
+
+# Temp / generated model outputs
+temp-models/*
