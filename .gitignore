@@ -31,3 +31,5 @@ MUJOCO_LOG.TXT
 
 # Temp / generated model outputs
 temp-models/*
+MJDATA.TXT
+MJMODEL.TXT
