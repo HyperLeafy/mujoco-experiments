@@ -14,4 +14,6 @@ dependencies = [
     "numpy>=2.4.0",
     "numpy-stl>=3.2.0",
     "robot-format-converter>=1.0.0",
+    "pillow>=12.0.0",
+    "matplotlib>=3.10.8",
 ]
