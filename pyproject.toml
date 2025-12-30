@@ -16,4 +16,5 @@ dependencies = [
     "robot-format-converter>=1.0.0",
     "pillow>=12.0.0",
     "matplotlib>=3.10.8",
+    "gymnasium>=1.2.3",
 ]
